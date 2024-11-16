@@ -7,12 +7,35 @@ h1{
     font-size: 50px;
     color: rgb(43, 19, 65);
 }
+select{
+    background: rgba(255, 255, 255, 0.3);;
+
+    max-width: 250px  ;
+    margin: 45px auto;
+    box-shadow: 0 30px 50px rgba(65, 50, 100, 0.08);
+    border-radius: 16px;
+    padding: 20px;
+    }
+
+
+.city{
+    text-align: center;
+    font-size: 20px;
+    color: rgb(43, 19, 65);
+
+}
+h2{
+     text-align: center;
+     font-size: 20px;
+}
 a{
     color: rgb(43, 19, 65);
 
 }
+
 footer{
     text-align: center;
     font-size: 15px;
     color: blueviolet;
+    padding-top: 20px;
 }
