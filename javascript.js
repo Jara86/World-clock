@@ -5,17 +5,19 @@ function updateCityTime(cityId, timezone) {
         const timeElement = cityElement.querySelector(".time");
         const cityTime = moment().tz(timezone);
 
-        dateElement.innerHTML = cityTime.format("MMMM Do YYYY");
+        dateElement.innerHTML = cityTime.format("dddd, MMMM Do YYYY");
         timeElement.innerHTML = cityTime.format("h:mm:ss [<small>]A[</small>]");
     }
 }
 
 function updateTime() {
     const cities = [
-        { id: "current-position", timezone: "Europe/London" },
+        { id: "current-position", timezone: moment.tz.guess() },
         { id: "Stockholm", timezone: "Europe/Stockholm" },
         { id: "Canberra", timezone: "Australia/Canberra" },
-        { id: "Toronto", timezone: "America/Toronto" }
+        { id: "Toronto", timezone: "America/Toronto" },
+        { id: "Tokyo", timezone: "Asia/Tokyo" },
+        { id: "London", timezone: "Europe/London" }
     ];
 
     cities.forEach(city => updateCityTime(city.id, city.timezone));
@@ -27,7 +29,7 @@ function updateCity(event) {
         cityTimeZone = moment.tz.guess();
     }
 
-    const cityName = cityTimeZone.split("/")[1].replace("_", " ");
+    const cityName = cityTimeZone.split("/")[1].replace(/_/g, " ");
     const cityTime = moment().tz(cityTimeZone);
     const citiesElement = document.querySelector("#cities");
     
@@ -35,7 +37,7 @@ function updateCity(event) {
         <div class="city">
             <div>
                 <h2>${cityName}</h2>
-                <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
+                <div class="date">${cityTime.format("dddd, MMMM Do YYYY")}</div>
             </div>
             <div class="time">
                 ${cityTime.format("h:mm:ss")} 
@@ -45,10 +47,23 @@ function updateCity(event) {
     `;
 }
 
-// Initialize the clock
-updateTime();
-setInterval(updateTime, 1000);
+function setCurrentPosition() {
+    const userTimeZone = moment.tz.guess();
+    const cityName = userTimeZone.split("/")[1].replace(/_/g, " ");
+    const currentElement = document.querySelector("#current-position");
+    
+    currentElement.querySelector("h2").innerHTML = `${cityName}`;
+    updateCityTime("current-position", userTimeZone);
+}
+
+// Initialize everything when DOM is ready
+document.addEventListener("DOMContentLoaded", () => {
+    setCurrentPosition();
+    updateTime();
+    setInterval(updateTime, 1000);
+});
 
 // Set up city selector
 const citySelect = document.querySelector("#city-select");
 citySelect.addEventListener("change", updateCity);
+
