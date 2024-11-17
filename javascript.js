@@ -13,7 +13,7 @@ function updateCityTime(cityId, timezone) {
 function updateTime() {
     const cities = [
         { id: "Stockholm", timezone: "Europe/Stockholm" },
-        { id: "paris", timezone: "Australia/Canberra" },
+        { id: "Canberra", timezone: "Australia/Canberra" },
         { id: "Toronto", timezone: "America/Toronto" }
     ];
 
