@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Clock - Jarouschka Buis</title>
     <link rel="stylesheet" href="style.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.37/moment-timezone-with-data-1970-2030.min.js"></script>
 
 </head>
 <body>
@@ -20,23 +23,23 @@
 
     </select>
     <div class="city-box">
-    <div class="city">
-    <h2>Stockholm</h2>
-    <div class="date">Monday 10 November</div>
-    <div class="time">16:00</div>
-</div>
-<div class="city">
-    <h2>Canberra</h2>
-    <div class="date">Monday 10 November</div>
-    <div class="time">16:00</div>
-</div>
-<div class="city">
-    <h2>Torronto</h2>
-    <div class="date">Sunday 09 November</div>
-    <div class="time">6:00</div>
-</div>
-</div>
-
+        <div class="city" id="Stockholm">
+            <h2>Stockholm</h2>
+            <div class="date">Monday 10 November</div>
+            <div class="time">9:00 <small>PM</small></div>
+        </div>
+        <div class="city" id="Canberra">
+            <h2>Canberra</h2>
+            <div class="date">Monday 10 November</div>
+            <div class="time">6:00 <small>AM</small></div>
+        </div>
+        <div class="city" id="Toronto">
+            <h2>Toronto</h2>
+            <div class="date">Sunday 09 November</div>
+            <div class="time">6:00 <small>PM</small></div>
+        </div>
+    </div>
+    
   
 
     <footer>
@@ -47,6 +50,7 @@
     </footer>
 </div>
 </div>
-    <script src="javascript/index.js"></script>
+    <script src="javascript.js"></script>
+   
 </body>
 </html>
